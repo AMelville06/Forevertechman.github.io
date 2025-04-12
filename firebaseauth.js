@@ -116,21 +116,18 @@ signIn.addEventListener('click', (event)=>{
 //  });
 //});
 
+const auth = getAuth(); // ← this was missing!
+
 document.addEventListener("DOMContentLoaded", () => {
     const auth = getAuth();
 
     const reset = document.getElementById("reset");
     reset.addEventListener("click", function(event){
         event.preventDefault();
-
+    
         const email = document.getElementById("email").value;
-
-        // ✅ Check if the email field is empty
-        if (!email) {
-            alert("Please enter your email address first.");
-            return;
-        }
-
+        const auth = getAuth(); // ⬅️ Add this line
+    
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 alert("Password reset email sent to " + email);
@@ -139,5 +136,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Error: " + error.message);
             });
     });
+    
 });
-
