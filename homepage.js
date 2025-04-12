@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 // Your Firebase config
 const firebaseConfig = {
@@ -48,4 +49,16 @@ document.getElementById('logout').addEventListener('click', () => {
     }).catch((error) => {
         console.error("Error signing out:", error);
     });
+});
+
+const auth = getAuth();
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, allow access to homepage
+        console.log("User is logged in:", user);
+    } else {
+        // User is not signed in, redirect to login page
+        window.location.href = "login.html"; // or your login page URL
+    }
 });
