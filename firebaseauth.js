@@ -116,24 +116,29 @@ signIn.addEventListener('click', (event)=>{
 //  });
 //});
 
-const reset = document.getElementById("reset");
-reset.addEventListener("click", function(event){
-event.preventDefault()
-const email = document.getElementById("email").value;
+document.addEventListener("DOMContentLoaded", () => {
+    const auth = getAuth();
 
-sendPasswordResetEmail(auth, email)
-    .then(() => {
-        // Password reset email sent!
-        // ..
-        alert("email sent");
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-        // ..
-    })
+    const reset = document.getElementById("reset");
+    if (reset) {
+        reset.addEventListener("click", function (event) {
+            event.preventDefault();
 
+            const emailInput = document.getElementById("email");
+            const email = emailInput ? emailInput.value : "";
 
+            if (!email) {
+                alert("Please enter your email address.");
+                return;
+            }
 
-})
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert("Password reset email sent to " + email);
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
+        });
+    }
+});
