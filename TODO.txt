@@ -6,8 +6,8 @@ Navbar:
     squadron roles tab
     applications tab
     eservices tab
+Change domain name for firebase and github pages
+Get more users for testing -> Dad, Doubrava, etc.
+Users can currently go to homepage.html without logging in. This needs to be fixed.
 ...
-...
-...
-
 Turn into app?
