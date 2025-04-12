@@ -29,8 +29,7 @@ onAuthStateChanged(auth, (user)=>{
                 document.getElementById('loggedUserFName').innerText=userData.firstName;
 
                 // Username in top-right
-                document.getElementById('usernameTopRight').innerText=userData.firstName;
-            } else {
+                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;            } else {
                 console.log("No document found");
             }
         }).catch((error) => {
