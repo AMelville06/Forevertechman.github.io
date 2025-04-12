@@ -17,24 +17,21 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
-// Watch for auth state changes
-onAuthStateChanged(auth, (user) => {
-    const loggedInUserId = localStorage.getItem('loggedInUserId');
-
-    if (loggedInUserId) {
+onAuthStateChanged(auth, (user)=>{
+    const loggedInUserId=localStorage.getItem('loggedInUserId');
+    if(loggedInUserId){
+        console.log(user);
         const docRef = doc(db, "users", loggedInUserId);
-
-        getDoc(docRef).then((docSnap) => {
-            if (docSnap.exists()) {
-                const userData = docSnap.data();
-
-                // Fill in user info
-                document.getElementById('loggedUserFName').innerText = userData.firstName;
-                document.getElementById('loggedUserLName').innerText = userData.lastName;
-                document.getElementById('loggedUserEmail').innerText = userData.email;
+        getDoc(docRef)
+        .then((docSnap)=>{
+            if(docSnap.exists()){
+                const userData=docSnap.data();
+                document.getElementById('loggedUserFName').innerText=userData.firstName;
+                document.getElementById('loggedUserEmail').innerText=userData.email;
+                document.getElementById('loggedUserLName').innerText=userData.lastName;
 
                 // Username in top-right
-                document.getElementById('usernameTopRight').innerText = userData.firstName;
+                document.getElementById('usernameTopRight').innerText=userData.firstName;
             } else {
                 console.log("No document found");
             }
