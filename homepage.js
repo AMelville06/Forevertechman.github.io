@@ -27,8 +27,6 @@ onAuthStateChanged(auth, (user)=>{
             if(docSnap.exists()){
                 const userData=docSnap.data();
                 document.getElementById('loggedUserFName').innerText=userData.firstName;
-                document.getElementById('loggedUserEmail').innerText=userData.email;
-                document.getElementById('loggedUserLName').innerText=userData.lastName;
 
                 // Username in top-right
                 document.getElementById('usernameTopRight').innerText=userData.firstName;
