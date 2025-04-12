@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
+import {getAuth, sendPasswordResetEmail} from "firebase/auth";
 
 const firebaseConfig = {
 
@@ -96,3 +97,22 @@ signIn.addEventListener('click', (event)=>{
        }
    })
 })
+
+document.getElementById("recoverPasswordLink").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent link from reloading the page
+
+    const email = document.getElementById("emailInput").value; // Change this ID to match your input box
+    if (!email) {
+        alert("Please enter your email address.");
+        return;
+    }
+
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("Password reset email sent!");
+        })
+        .catch((error) => {
+            console.error("Error sending password reset email:", error.message);
+            alert("Error: " + error.message);
+        });
+});
