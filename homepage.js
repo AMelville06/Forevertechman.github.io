@@ -20,7 +20,7 @@ const db = getFirestore();
 // Check auth state
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is logged in
+        // User is logged in, fetch user info
         const docRef = doc(db, "users", user.uid); // Use Firebase user ID
         getDoc(docRef).then((docSnap) => {
             if (docSnap.exists()) {
@@ -38,7 +38,6 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// Handle logout
 document.getElementById('logout').addEventListener('click', () => {
     signOut(auth).then(() => {
         window.location.href = 'login.html';  // Redirect to login after logout
