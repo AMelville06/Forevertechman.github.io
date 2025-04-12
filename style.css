@@ -6,8 +6,9 @@
 }
 body{
     background-color: #c9d6ff;
-    background:linear-gradient(to right,#e2e2e2,#c9d6ff);
+    background: linear-gradient(to right, #00f7ff, rgb(0, 110, 255));
 }
+
 .container{
     background:#fff;
     width:450px;

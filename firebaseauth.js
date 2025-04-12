@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
-import {getAuth, sendPasswordResetEmail} from "firebase/auth";
 
 const firebaseConfig = {
 
@@ -107,11 +106,12 @@ form.addEventListener('submit', (e) => {
   const email = document.getElementById('emailInput').value;
 
   sendPasswordResetEmail(auth, email)
-    .then(() => {
-      alert("Password reset email sent!");
-    })
-    .catch((error) => {
-      console.error("Error:", error.message);
-      alert("Error: " + error.message);
-    });
+  .then(() => {
+    alert("Password reset email sent to " + email);
+  })
+  .catch((error) => {
+    console.error("Error:", error.code, error.message);
+    alert("Error: " + error.message);
+  });
+
 });
