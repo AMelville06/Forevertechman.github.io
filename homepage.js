@@ -35,7 +35,7 @@ onAuthStateChanged(auth, (user) => {
                 document.getElementById('loggedUserEmail').innerText = userData.email;
 
                 // Username in top-right
-                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+                document.getElementById('usernameTopRight').innerText = `Hello, ${loggedUserFirstname}`;
             } else {
                 console.log("No document found");
             }
