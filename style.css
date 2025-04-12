@@ -138,7 +138,7 @@ button:hover{
 .messageDiv {
     display: block;
     padding: 10px;
-    margin-bottom: 15px;
+    margin: -5px 0 15px 0; /* negative top margin moves it up slightly */
     background-color: #ffe6e6;
     color: #a10000;
     border: 1px solid #ffcccc;
