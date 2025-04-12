@@ -74,14 +74,14 @@ button:hover {
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 1px;
 }
 
 .image-container img {
     display: block;
     width: 600px;
     height: auto;
-    border-radius: 10px;
+    border-radius: 3px;
     opacity: 0.4;
     position: fixed;
     margin-right: auto;
