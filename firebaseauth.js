@@ -98,21 +98,20 @@ signIn.addEventListener('click', (event)=>{
    })
 })
 
-document.getElementById("recoverPasswordLink").addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent link from reloading the page
 
-    const email = document.getElementById("emailInput").value; // Change this ID to match your input box
-    if (!email) {
-        alert("Please enter your email address.");
-        return;
-    }
+const auth = getAuth();
+const form = document.getElementById('recoverForm');
 
-    sendPasswordResetEmail(auth, email)
-        .then(() => {
-            alert("Password reset email sent!");
-        })
-        .catch((error) => {
-            console.error("Error sending password reset email:", error.message);
-            alert("Error: " + error.message);
-        });
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('emailInput').value;
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("Password reset email sent!");
+    })
+    .catch((error) => {
+      console.error("Error:", error.message);
+      alert("Error: " + error.message);
+    });
 });
