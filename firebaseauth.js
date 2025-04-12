@@ -98,20 +98,42 @@ signIn.addEventListener('click', (event)=>{
 })
 
 
-const auth = getAuth();
-const form = document.getElementById('recoverForm');
+//const auth = getAuth();
+//const form = document.getElementById('recoverForm');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = document.getElementById('emailInput').value;
 
-  sendPasswordResetEmail(auth, email)
-  .then(() => {
-    alert("Password reset email sent to " + email);
-  })
-  .catch((error) => {
-    console.error("Error:", error.code, error.message);
-    alert("Error: " + error.message);
-  });
+//form.addEventListener('submit', (e) => {
+//  e.preventDefault();
+//  const email = document.getElementById('emailInput').value;
 
-});
+//  sendPasswordResetEmail(auth, email)
+//  .then(() => {
+//    alert("Password reset email sent to " + email);
+//  })
+//  .catch((error) => {
+//    console.error("Error:", error.code, error.message);
+//    alert("Error: " + error.message);
+//  });
+//});
+
+const reset = document.getElementById("reset");
+reset.addEventListener("click", function(event){
+event.preventDefault()
+const email = document.getElementById("email").value;
+
+sendPasswordResetEmail(auth, email)
+    .then(() => {
+        // Password reset email sent!
+        // ..
+        alert("email sent");
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        // ..
+    })
+
+
+
+})
