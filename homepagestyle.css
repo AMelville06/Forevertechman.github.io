@@ -15,16 +15,43 @@ body {
     position: relative;
 }
 
-#usernameTopRight {
+/*#usernameTopRight {
     position: fixed;
     top: 10px;
     right: 20px;
     font-weight: bold;
     font-size: 1rem;
     color: #333;
-    background: rgba(255, 255, 255, 0.6); /* optional for better contrast */
+    background: rgba(255, 255, 255, 0.6);
     padding: 5px 10px;
     border-radius: 5px;
+}
+*\
+/* Container that holds the username and dropdown */
+/* Container that holds the username and dropdown */
+#userDropdown {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 999;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Username display */
+#usernameTopRight {
+    background: rgba(255, 255, 255, 0.6);
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+/* Show on hover */
+#userDropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Heading */
@@ -210,52 +237,58 @@ input:focus~label,input:not(:placeholder-shown)~label{
 }
 
 
+/* Dropdown container */
 .dropdown {
     position: fixed;
     top: 10px;
     right: 20px;
-    display: inline-block;
     font-weight: bold;
     font-size: 1rem;
+    z-index: 999;
 }
 
-/* Make the toggle look nice */
+/* The username display */
 .dropdown-toggle {
     background: rgba(255, 255, 255, 0.6);
     color: #333;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
-/* This dropdown content will now align correctly to the right */
+/* Hidden by default */
 .dropdown-content {
     display: none;
-    position: absolute;
-    top: 100%; /* Places it below the toggle */
-    right: 0;
-    background-color: white;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    z-index: 1000;
+    position: fixed;
+    right: 25px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    height: 25px;
+    top:33px;
 }
 
-/* Show when hovered */
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
+/* Logout button style */
 .dropdown-content button {
+    right: 0;
     background: none;
     border: none;
     padding: 10px;
     width: 100%;
-    text-align: left;
+    text-align: right;
+    right:33px;
     cursor: pointer;
     font-size: 1rem;
+    color: #333;
+    top:1px;
 }
 
-.dropdown-content button:hover {
-    background-color: #f1f1f1;
-}
