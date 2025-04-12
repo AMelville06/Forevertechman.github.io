@@ -116,29 +116,25 @@ signIn.addEventListener('click', (event)=>{
 //  });
 //});
 
+const auth = getAuth(); // ← this was missing!
+
 document.addEventListener("DOMContentLoaded", () => {
     const auth = getAuth();
 
     const reset = document.getElementById("reset");
-    if (reset) {
-        reset.addEventListener("click", function (event) {
-            event.preventDefault();
-
-            const emailInput = document.getElementById("email");
-            const email = emailInput ? emailInput.value : "";
-
-            if (!email) {
-                alert("Please enter your email address.");
-                return;
-            }
-
-            sendPasswordResetEmail(auth, email)
-                .then(() => {
-                    alert("Password reset email sent to " + email);
-                })
-                .catch((error) => {
-                    alert("Error: " + error.message);
-                });
-        });
-    }
+    reset.addEventListener("click", function(event){
+        event.preventDefault();
+    
+        const email = document.getElementById("email").value;
+        const auth = getAuth(); // ⬅️ Add this line
+    
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert("Password reset email sent to " + email);
+            })
+            .catch((error) => {
+                alert("Error: " + error.message);
+            });
+    });
+    
 });

@@ -147,3 +147,11 @@ button:hover{
     text-align: center;
     font-size: 0.95rem;
 }
+
+.forgot-password {
+    text-align: right;
+    width: 100%;
+    display: block;
+    margin-top: -10px; /* optional: pulls it closer to password input */
+    margin-bottom: 10px;
+  }
