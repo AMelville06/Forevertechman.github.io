@@ -54,12 +54,12 @@ button {
     top: 5px;
     right: 20px;
     margin: 30px auto;
-    padding: 10px 20px;
+    padding: 5px 10px;
     background: rgba(255, 255, 255, 0.6); /* optional for better contrast */
     color: #333;
     font-weight: bold;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 3px;
     border: none;
     cursor: pointer;
 }
