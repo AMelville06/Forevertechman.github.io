@@ -70,16 +70,22 @@ button:hover {
 
 }
 
-/* Duck image styling */
 .image-container {
+    display: flex;
+    justify-content: center;
     text-align: center;
     margin-top: 50px;
 }
 
 .image-container img {
-    width: 900px;
+    display: block;
+    width: 600px;
     height: auto;
     border-radius: 10px;
+    opacity: 0.4;
+    position: fixed;
+    margin-right: auto;
+    
 }
 
 .messageDiv {

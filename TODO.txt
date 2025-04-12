@@ -1,0 +1,13 @@
+About section
+Logout being dropdown under Hello, {User}
+Navbar:
+    about tab
+    calander tab
+    squadron roles tab
+    applications tab
+    eservices tab
+...
+...
+...
+
+Turn into app?
