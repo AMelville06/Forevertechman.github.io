@@ -124,7 +124,7 @@ button:hover{
     margin-top:0.9rem;
     font-weight:bold;
 }
- #signUpButton, #signInButton{
+#signUpButton, #signInButton{
     color:rgb(125,125,235);
     border:none;
     background-color:transparent;

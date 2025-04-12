@@ -50,10 +50,13 @@ h1 {
 /* Logout button */
 button {
     display: block;
+    position: fixed;
+    top: 5px;
+    right: 20px;
     margin: 30px auto;
     padding: 10px 20px;
-    background-color: #c9d6ff;
-    color: blueviolet;
+    background: rgba(255, 255, 255, 0.6); /* optional for better contrast */
+    color: #333;
     font-weight: bold;
     font-size: 1rem;
     border-radius: 5px;
