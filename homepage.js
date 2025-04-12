@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 // Your Firebase config
 const firebaseConfig = {
@@ -18,47 +17,40 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
-onAuthStateChanged(auth, (user)=>{
-    const loggedInUserId=localStorage.getItem('loggedInUserId');
-    if(loggedInUserId){
-        console.log(user);
-        const docRef = doc(db, "users", loggedInUserId);
+// Auth state change listener
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, allow access to homepage
+        console.log("User is logged in:", user);
+
+        // Fetch the user's information from Firestore
+        const userId = user.uid; // Firebase gives you the user's UID
+        const docRef = doc(db, "users", userId);
         getDoc(docRef)
-        .then((docSnap)=>{
-            if(docSnap.exists()){
-                const userData=docSnap.data();
-                // Username in top-right
-                // Update usernameTopRight with Firebase data
-                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
-            } else {
-                console.log("No document found");
-            }
-        }).catch((error) => {
-            console.error("Error getting document:", error);
-        });
+            .then((docSnap) => {
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    // Username in top-right
+                    document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+                } else {
+                    console.log("No document found for user");
+                }
+            })
+            .catch((error) => {
+                console.error("Error getting document:", error);
+            });
+
     } else {
-        console.log("User ID not found in localStorage");
+        // User is not signed in, redirect to login page
+        window.location.href = "login.html";
     }
 });
 
 // Handle logout
 document.getElementById('logout').addEventListener('click', () => {
-    localStorage.removeItem('loggedInUserId');
     signOut(auth).then(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'index.html'; // Redirect to the homepage or any other page after sign-out
     }).catch((error) => {
         console.error("Error signing out:", error);
     });
-});
-
-const auth = getAuth();
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        // User is signed in, allow access to homepage
-        console.log("User is logged in:", user);
-    } else {
-        // User is not signed in, redirect to login page
-        window.location.href = "login.html"; // or your login page URL
-    }
 });
