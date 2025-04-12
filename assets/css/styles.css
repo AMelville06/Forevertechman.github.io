@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
+
+/* CSS Variables */
+:root {
+  --normal-font: 400;
+  --bold-font: 600;
+  --bolder-font: 900;
+  --primary-color: #0652dd;
+  --secondary-color: #ea2027;
+  --line-height: 1.7rem;
+  --transition: 0.4s ease-in;
+}
+
+/* Smooth scroll effect */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+/* Dark theme starts*/
+
+/* Dark theme ends */
+
+/* Navbar starts */
+
+/* Dark theme */
+
+/* Dark theme ends */
+/* Navbar ends */
+
+/* Hero section starts */
+
+/* Hero section ends */
+
+/* About section start*/
+
+/* About section ends */
+
+/* Image gallery starts */
+
+/* Image gallery ends */
+
+/* Stakeholders start */
+/* Stakeholders ends */
+
+/* Scroll to top button starts */
+
+/* Scroll to top button ends */
+
+/* Subscription form starts */
+
+/* Subscription form ends */
+
+/* Social icons */
+
+/* Footer */
+
+/* Media Query */
