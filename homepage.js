@@ -17,30 +17,37 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
-// Check auth state
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is logged in, fetch user info
-        const docRef = doc(db, "users", user.uid); // Use Firebase user ID
-        getDoc(docRef).then((docSnap) => {
-            if (docSnap.exists()) {
-                const userData = docSnap.data();
-                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
-            } else {
-                console.log("No document found for the user");
-            }
-        }).catch((error) => {
-            console.error("Error getting user document:", error);
-        });
+        console.log("User is logged in:", user);
+        const loggedInUserId = localStorage.getItem('loggedInUserId');
+        if (loggedInUserId) {
+            console.log(user);
+            const docRef = doc(db, "users", loggedInUserId);
+            getDoc(docRef)
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+                    } else {
+                        console.log("No document found");
+                    }
+                }).catch((error) => {
+                    console.error("Error getting document:", error);
+                });
+        } else {
+            console.log("User ID not found in localStorage");
+        }
     } else {
-        // User is not logged in, redirect to login page
-        window.location.href = "login.html";
+        console.log("User is not logged in");
     }
 });
 
+// Handle logout
 document.getElementById('logout').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUserId');
     signOut(auth).then(() => {
-        window.location.href = 'login.html';  // Redirect to login after logout
+        window.location.href = 'index.html';
     }).catch((error) => {
         console.error("Error signing out:", error);
     });
