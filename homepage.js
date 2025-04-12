@@ -30,6 +30,7 @@ onAuthStateChanged(auth, (user) => {
 
                 // Fill in user info
                 document.getElementById('loggedUserFName').innerText = userData.firstName;
+                document.getElementById('loggedUserFNameInfo').innerText = userData.firstName;
                 document.getElementById('loggedUserLName').innerText = userData.lastName;
                 document.getElementById('loggedUserEmail').innerText = userData.email;
 
