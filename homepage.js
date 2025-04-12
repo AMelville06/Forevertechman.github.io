@@ -27,7 +27,9 @@ onAuthStateChanged(auth, (user)=>{
             if(docSnap.exists()){
                 const userData=docSnap.data();
                 // Username in top-right
-                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;            } else {
+                // Update usernameTopRight with Firebase data
+                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+            } else {
                 console.log("No document found");
             }
         }).catch((error) => {

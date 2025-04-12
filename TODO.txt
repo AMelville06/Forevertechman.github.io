@@ -9,5 +9,7 @@ Navbar:
 Change domain name for firebase and github pages
 Get more users for testing -> Dad, Doubrava, etc.
 Users can currently go to homepage.html without logging in. This needs to be fixed.
+Recover Password doesn't work
+Google Login needs to work
 ...
 Turn into app?

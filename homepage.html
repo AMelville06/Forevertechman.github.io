@@ -8,21 +8,21 @@
     <script type="module" src="homepage.js"></script>
 
     <style>
+        body {margin:0;}
+        
         ul {
           list-style-type: none;
           margin: 0;
           padding: 0;
           overflow: hidden;
-          background-color: #333;
+          background-color: rgb(0, 149, 255);
+          position: fixed;
+          bottom: 0;
+          width: 100%;
         }
         
         li {
           float: left;
-          border-right:1px solid #bbb;
-        }
-
-        li:last-child {
-            border-right: none;
         }
         
         li a {
@@ -47,13 +47,16 @@
 
 </head>
 <body>
-    <!-- Top-right corner user name -->
-    <div id="usernameTopRight"></div>
+    <!-- Top-right corner dropdown -->
+    <div id="userDropdown" class="dropdown">
+        <div id="usernameTopRight" class="dropdown-toggle">Hello, User</div>
+        <div class="dropdown-content">
+            <button id="logout">Logout</button>
+        </div>
+    </div>
 
     <h1>Welcome to the Unofficial NY283 Website</h1>
 
-    <!-- Logout button -->
-    <button id="logout">Logout</button>
 
     <!-- Duck image placeholder -->
     <div class="image-container">
@@ -64,8 +67,9 @@
         <li><a href="https://amelville06.github.io/Forevertechman.github.io/homepage.html">Home</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
+        <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
 
+        
 </body>
 </html>
