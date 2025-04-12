@@ -30,12 +30,11 @@ onAuthStateChanged(auth, (user) => {
 
                 // Fill in user info
                 document.getElementById('loggedUserFName').innerText = userData.firstName;
-                document.getElementById('loggedUserFNameInfo').innerText = userData.firstName;
                 document.getElementById('loggedUserLName').innerText = userData.lastName;
                 document.getElementById('loggedUserEmail').innerText = userData.email;
 
                 // Username in top-right
-                document.getElementById('usernameTopRight').innerText = `Hello, ${loggedUserFirstname}`;
+                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
             } else {
                 console.log("No document found");
             }
