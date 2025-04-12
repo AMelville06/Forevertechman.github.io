@@ -26,8 +26,6 @@ onAuthStateChanged(auth, (user)=>{
         .then((docSnap)=>{
             if(docSnap.exists()){
                 const userData=docSnap.data();
-                document.getElementById('loggedUserFName').innerText=userData.firstName;
-
                 // Username in top-right
                 document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;            } else {
                 console.log("No document found");
