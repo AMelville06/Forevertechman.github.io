@@ -135,3 +135,14 @@ button:hover{
     text-decoration:underline;
     color:blue;
 } 
+.messageDiv {
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #ffe6e6;
+    color: #a10000;
+    border: 1px solid #ffcccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.95rem;
+}
