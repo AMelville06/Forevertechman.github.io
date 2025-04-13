@@ -60,6 +60,10 @@ h1 {
     color: black;
 }
 
+.active {
+    background-color: darkblue;
+}
+
 /* Logout button */
 button {
     display: block;
@@ -298,5 +302,39 @@ input:focus~label,input:not(:placeholder-shown)~label{
     font-size: 1rem;
     color: #333;
     top:1px;
+}
+
+.staffApplications h3{
+    font-size: x-large;
+    text-align:left;
+    position: relative;
+    left: 30px;
+    top: 120px;
+    display: inline;
+    background-color: rgba(0, 85, 255, 0.322);
+    padding: 10px;
+    border-radius: 35px;
+}
+
+.currentStaff h3{
+    font-size: x-large;
+    text-align:left;
+    position: relative;
+    left: 30px;
+    top: 150px;
+    display: inline;
+    background-color: rgba(0, 85, 255, 0.322);
+    padding: 10px;
+    border-radius: 35px;
+}
+
+.staffApplications a {
+    color: rgb(0, 0, 255);
+    text-decoration: none;
+}
+
+.currentStaff a{
+    color:rgb(0, 0, 255);
+    text-decoration: none;
 }
 
