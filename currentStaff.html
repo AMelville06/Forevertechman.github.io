@@ -3,97 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Current Staff</title>
+  <link rel="stylesheet" href="staffstyle.css">
+  <script type="module" src="homepage.js"></script>
+
   <style>
-    body {
+    body {margin:0;}
+    
+    ul {
+      list-style-type: none;
       margin: 0;
-      padding: 30px;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(to right, #00f7ff, rgb(0, 110, 255));
-      min-height: 100vh;
-      position: relative;
-    }
-
-    .tab-buttons {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .tab-button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #444;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      transition: background-color 0.3s;
-    }
-
-    .tab-button:hover {
-      background-color: #222;
-    }
-
-    .dropdown-content {
+      padding: 0;
       overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
-      background-color: #f9f9f9;
-      padding: 0 15px;
-      margin: 0 auto;
-      max-width: 600px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .dropdown-content.open {
-      max-height: 500px;
-      opacity: 1;
-      padding: 15px;
-    }
-
-    .person {
-      margin: 10px 0;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .person img {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .person .info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    #topBtn {
-      display: none;
+      background-color: rgb(0, 149, 255);
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 99;
-      font-size: 16px;
-      background-color: #333;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
       color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
     }
+    
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+    
+    </style>
 
-    #topBtn:hover {
-      background-color: #555;
-    }
-  </style>
 </head>
 <body>
 
@@ -168,6 +113,26 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+
+    <div id="userDropdown">
+        <div id="usernameTopRight">Hello, User</div>
+        <div class="userdropdown-content">
+        <button id="logout">Logout</button>
+        </div>
+    </div>
+
+    <div class="background-image"></div>
+  
+    <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="#news">Calander</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li><a href="#about">About</a></li>
+        </ul>
+
+    </div>
+
+
 
 </body>
 </html>
