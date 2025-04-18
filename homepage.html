@@ -43,6 +43,14 @@
 
 </head>
 <body>
+    <!-- Scroll to Top -->
+    <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
+
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
     <div id="userDropdown">
         <div id="usernameTopRight">Hello, User</div>
         <div class="dropdown-content">
@@ -60,7 +68,7 @@
         <li><a class="active" href="homepage.html">Home</a></li>
         <li><a href="#news">Calander</a></li>
         <li><a href="staff.html">Staff</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="about.html">About</a></li>
         </ul>
 
 

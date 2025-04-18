@@ -64,6 +64,25 @@ h1 {
     background-color: darkblue;
 }
 
+  #topBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #topBtn:hover {
+    background-color: #555;
+  }
+
 /* Logout button */
 button {
     display: block;
@@ -338,3 +357,16 @@ input:focus~label,input:not(:placeholder-shown)~label{
     text-decoration: none;
 }
 
+.aboutMessage {
+    text-align:center;
+    padding: 5%;
+    font-size: large;
+    position: relative;
+}
+
+.aboutEnd {
+    text-align:right;
+    padding: 5%;
+    font-size: large;
+    position: relative;
+}

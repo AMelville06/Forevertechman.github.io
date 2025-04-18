@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About</title>
+  <link rel="stylesheet" href="homepagestyle.css">
+  <script type="module" src="homepage.js"></script>
+
+  <style>
+    body {margin:0;}
+    body {min-height: 5000px;}
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgb(0, 149, 255);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+    
+  </style>
+
+
+</head>
+<body>
+  <!-- Scroll to Top -->
+  <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
+  <script>
+
+
+    const topBtn = document.getElementById("topBtn");
+
+    window.onscroll = function () {
+        topBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+          ? "block"
+          : "none";
+      };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  <div id="userDropdown">
+    <div id="usernameTopRight">Hello, User</div>
+    <div class="dropdown-content">
+      <button id="logout">Logout</button>
+    </div>
+  </div>
+    <div class="aboutTitle">
+        <h1>The Twin Tiers Cadet Squadon Unoffical Website</h1>
+    </div>
+  <div class="aboutMessage">
+     <p>TFO Anthony Melville started this project on April 11th, 2025. Regardless of usefulness, I wanted to make a site for the sake of trying. It was a fun time, and a great learning oppertunity. During this process, I learned more about HTML, CSS, and Javascript, along with some other things like GitHub Pages. It was a lot of fun. I wanted to make it to have some usefulness to the squadron, as a way of quickly seeing the calander, having a place for staff applications, and, depending on how well everything else went, a built-in messaging system. Despite not knowing if this would work out in the end, I tried to accomplish all of the goals just to see if I could. It was fun to challenge myself, and as of right now, April 18th, I have made good progress. I will continue to work on this site, with the hopes that it will become useful to the squadron down the line.</p>
+    </div>
+    <div class="aboutEnd">
+    <p>-TFO Melville</p>
+    </div>
+  <div class="background-image"></div>
+  
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="#news">Calander</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a class="active" href="about.html">About</a></li>
+  </div>
+</body>
+</html>
