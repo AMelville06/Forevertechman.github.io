@@ -166,10 +166,7 @@ button:hover {
     z-index: 1;                /* Make sure content is on top */
 }
 
-div {
-    overflow: hidden; /* Makes cutoff work */
-    display: inline-block; /* Fit div to contents */
-  }
+
 
 .messageDiv {
     display: block;
