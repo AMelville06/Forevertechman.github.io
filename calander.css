@@ -1,8 +1,7 @@
 html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 
@@ -13,6 +12,25 @@ body {
     background: linear-gradient(to right, #00f7ff, rgb(0, 110, 255));
     height: 100vh;
     position: relative;
+}
+
+body,html
+{
+    background-color:#DDEEDD;
+    padding:0px;
+    margin:0px;
+    height:100%;
+    width:100%;
+    overflow:hidden;
+}
+iframe
+{
+    margin-top: -30px;
+    margin-bottom: -30px;
+    padding:0;
+    border:none;
+    overflow:hidden;
+    background-color:#DDEEDD;
 }
 
 #userDropdown {
@@ -145,6 +163,12 @@ button:hover {
     position: relative;
     z-index: 1;                /* Make sure content is on top */
 }
+
+div {
+    overflow: hidden; /* Makes cutoff work */
+    border: 2px solid black; /* Just for aesthetics, can be removed */
+    display: inline-block; /* Fit div to contents */
+  }
 
 .messageDiv {
     display: block;

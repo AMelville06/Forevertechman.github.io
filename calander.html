@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NY283 Staff</title>
+  <link rel="stylesheet" href="calander.css"> <!-- if you have one -->
+  <script type="module" src="homepage.js"></script>
+
+
+
+  <style>
+    body {margin:0;}
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgb(0, 149, 255);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+    
+  </style>
+
+
+</head>
+<body>
+
+    <div style="width: 100%; display: flex; justify-content: center; padding: 2rem 0;">
+        <iframe 
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQSYVKcLDd0lAwzKJuAhhAu03QFpKbC4UDVojDzM3h-GiH0USqePO5I2DTA6S0DyX3P7Q6PRYrb0viB/pubhtml?gid=102537244&amp;range=G1:M18&amp;widget=true&amp;headers=false&amp;single=true" 
+          width="802" 
+          height="600" 
+          style="border: none;"
+          class="iframe" 
+          scrolling="no" 
+          frameborder="0"
+          display="block">
+        </iframe>
+      </div>
+      
+    <!-- Scroll to Top -->
+  <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  <div id="userDropdown">
+    <div id="usernameTopRight">Hello, User</div>
+    <div class="dropdown-content">
+      <button id="logout">Logout</button>
+    </div>
+  </div>
+
+  <div class="background-image"></div>
+  
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="calander.html">Calander</a></li>
+      <li><a class="active" href="staff.html">Staff</a></li>
+      <li><a href="about.html">About</a></li>
+  </div>
+</body>
+</html>
