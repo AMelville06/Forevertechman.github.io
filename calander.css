@@ -17,11 +17,12 @@ body, html {
   }
   
   .iframe-wrapper {
-    width: 900px;
+    width: 980px;
     height: 480px; /* Shrink height to force vertical cropping */
-    overflow: hidden;
+    overflow:hidden;
     margin: 40px auto; /* Centers the iframe horizontally */
     position: relative;
+    margin-top:0%;
   }
   
   .calendar-frame {
