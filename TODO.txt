@@ -5,6 +5,7 @@ Users can currently go to homepage.html without logging in. This needs to be fix
 Google Login needs to work
 Scroll to Top button only works on current staff page
 calander looks bad
+Announcements on Homepage** TODO ASAP
 ...
 Turn into app?
 
