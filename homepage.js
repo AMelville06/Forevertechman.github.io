@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 // Your Firebase config
 const firebaseConfig = {
@@ -51,4 +52,18 @@ document.getElementById('logout').addEventListener('click', () => {
     }).catch((error) => {
         console.error("Error signing out:", error);
     });
+});
+
+
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+
+const annRef = ref(db, 'announcements/current');
+onValue(annRef, snapshot => {
+  if (snapshot.exists()) {
+    document.getElementById('announcement-area').innerText = snapshot.val();
+  } else {
+    document.getElementById('announcement-area').innerText = 'No announcements at this time.';
+  }
 });

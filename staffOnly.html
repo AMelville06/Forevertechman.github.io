@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+    <script type="module" src="homepage.js"></script>
+
+    <style>
+        body {margin:0;}
+        
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: rgb(0, 149, 255);
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        </style>
+
+
+
+</head>
+<body>
+
+    <h1>Admin Portal</h1>
+
+    <div id="admin-panel" style="display:none;">
+      <textarea id="announcementInput" placeholder="Write announcement here..." rows="5" cols="40"></textarea>
+      <br>
+      <button id="submitAnnouncement">Post Announcement</button>
+    </div>
+  
+    <div id="no-permission" style="display:none;">
+      <p>You do not have permission to access this page.</p>
+    </div>
+  
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+      import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
+  
+    // Your Firebase config
+    const firebaseConfig = {
+        apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
+        authDomain: "forevertechman-website.firebaseapp.com",
+        projectId: "forevertechman-website",
+        storageBucket: "forevertechman-website.appspot.com",
+        messagingSenderId: "318552507372",
+        appId: "1:318552507372:web:75bf8c8e432157e32736c9"
+    };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+      const db = getDatabase();
+  
+      onAuthStateChanged(auth, user => {
+        if (user) {
+          const userRef = ref(db, `users/${user.uid}`); // Assuming you store staff flag under users/uid
+          get(userRef).then(snapshot => {
+            if (snapshot.exists() && snapshot.val().staff) {
+              document.getElementById('admin-panel').style.display = 'block';
+            } else {
+              document.getElementById('no-permission').style.display = 'block';
+            }
+          });
+        } else {
+          window.location.href = "/login.html"; // force login if not signed in
+        }
+      });
+  
+      document.getElementById('submitAnnouncement').addEventListener('click', () => {
+        const announcement = document.getElementById('announcementInput').value;
+        const annRef = ref(db, 'announcements/current');
+        set(annRef, announcement)
+          .then(() => {
+            alert('Announcement posted!');
+          })
+          .catch(error => {
+            console.error(error);
+            alert('Error posting announcement.');
+          });
+      });
+    </script>
+
+    <!-- Scroll to Top -->
+    <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
+
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+    <div id="userDropdown">
+        <div id="usernameTopRight">Hello, User</div>
+        <div class="dropdown-content">
+          <button id="logout">Logout</button>
+        </div>
+      </div>
+
+
+
+
+    <div class="background-image"></div>
+        
+    <ul>
+        <li><a class="active" href="homepage.html">Home</a></li>
+        <li><a href="calander.html">Calander</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li><a href="about.html">About</a></li>
+        <li style="float:right"><a href="https://www.capnhq.gov/Default.aspx?ReturnUrl=%2f">Eservices</a></li>
+        </ul>
+
+
+        
+</body>
+</html>
