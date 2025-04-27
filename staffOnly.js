@@ -1,7 +1,7 @@
 // staff_page.js or staff_page.ts
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import app from './firebase_config.js'; // Import the initialized Firebase app
+import app from './firebaseauth.js'; // Import the initialized Firebase app
 
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -44,7 +44,40 @@ async function checkStaffStatusAndRedirect() {
     }
 }
 
-// Use onAuthStateChanged to ensure the user is logged in before checking staff status
+
 onAuthStateChanged(auth, (user) => {
     checkStaffStatusAndRedirect();
+    if (user) {
+        console.log("User is logged in:", user);
+        const loggedInUserId = localStorage.getItem('loggedInUserId');
+        if (loggedInUserId) {
+            console.log(user);
+            const docRef = doc(db, "users", loggedInUserId);
+            getDoc(docRef)
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+                    } else {
+                        console.log("No document found");
+                    }
+                }).catch((error) => {
+                    console.error("Error getting document:", error);
+                });
+        } else {
+            console.log("User ID not found in localStorage");
+        }
+    } else {
+        console.log("User is not logged in");
+    }
+});
+
+// Handle logout
+document.getElementById('logout').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUserId');
+    signOut(auth).then(() => {
+        window.location.href = 'index.html';
+    }).catch((error) => {
+        console.error("Error signing out:", error);
+    });
 });
