@@ -1,5 +1,5 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore"; // Import Firestore functions
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import app from './firebaseauth.js'; // Import the initialized Firebase app
 import staffUserIds from './staff_ids.js'; // Import the list of staff user IDs
 
