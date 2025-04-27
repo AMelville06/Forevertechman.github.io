@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Staff Section</title>
     <link rel="stylesheet" href="homepagestyle.css">
-    <script type="module" src="homepage.js"></script>
+    <script type="module" src="staffOnly.js"></script>
 
     <style>
         body {margin:0;}
@@ -46,72 +46,8 @@
 
     <h1>Admin Portal</h1>
 
-    <div id="admin-panel" style="display:none;">
-      <textarea id="announcementInput" placeholder="Write announcement here..." rows="5" cols="40"></textarea>
-      <br>
-      <button id="submitAnnouncement">Post Announcement</button>
-    </div>
-  
-    <div id="no-permission" style="display:none;">
-      <p>You do not have permission to access this page.</p>
-    </div>
-  
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
-      import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
-  
-    // Your Firebase config
-    const firebaseConfig = {
-        apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
-        authDomain: "forevertechman-website.firebaseapp.com",
-        projectId: "forevertechman-website",
-        storageBucket: "forevertechman-website.appspot.com",
-        messagingSenderId: "318552507372",
-        appId: "1:318552507372:web:75bf8c8e432157e32736c9"
-    };
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-    
-    const auth = getAuth();
-    const db = getFirestore();
-    
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const uid = user.uid;
-    
-        // Check if the user is an admin
-        const userRef = doc(db, "users", uid); // assumes you store users like users/{uid}
-        const userSnap = await getDoc(userRef);
-    
-        if (userSnap.exists()) {
-          const userData = userSnap.data();
-          if (userData.staff === true) {
-            console.log("User is admin ✅");
-            showAdminPortal();
-          } else {
-            console.log("User is NOT admin ❌");
-            hideAdminPortal();
-          }
-        } else {
-          console.log("No user document found.");
-          hideAdminPortal();
-        }
-      } else {
-        console.log("No user signed in.");
-        hideAdminPortal();
-      }
-    });
-    
-    function showAdminPortal() {
-      document.getElementById('admin-portal').style.display = 'block';
-    }
-    
-    function hideAdminPortal() {
-      document.getElementById('admin-portal').style.display = 'none';
-    }
-    
-    </script>
+
+    <div id="admin-portal"></div>
 
     <!-- Scroll to Top -->
     <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
