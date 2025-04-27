@@ -7,16 +7,6 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import app from './firebaseauth.js'; // Import the initialized Firebase app
 
 
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
-  authDomain: "forevertechman-website.firebaseapp.com",
-  projectId: "forevertechman-website",
-  storageBucket: "forevertechman-website.appspot.com",
-  messagingSenderId: "318552507372",
-  appId: "1:318552507372:web:75bf8c8e432157e32736c9"
-};
 const auth = getAuth(app);
 
 const db = getFirestore(app);
