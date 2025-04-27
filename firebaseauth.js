@@ -2,6 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
+import { getAnalytics } from "firebase/analytics";
+
 
 const firebaseConfig = {
 
@@ -21,6 +23,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+export default app; // Make the app instance available to other modules
+
 
 function showMessage(message, divId){
    var messageDiv=document.getElementById(divId);
@@ -98,23 +105,18 @@ signIn.addEventListener('click', (event)=>{
 })
 
 
-//const auth = getAuth();
-//const form = document.getElementById('recoverForm');
+// Function to listen for authentication state changes
 
+export function onAuthChange(callback) {
 
-//form.addEventListener('submit', (e) => {
-//  e.preventDefault();
-//  const email = document.getElementById('emailInput').value;
-
-//  sendPasswordResetEmail(auth, email)
-//  .then(() => {
-//    alert("Password reset email sent to " + email);
-//  })
-//  .catch((error) => {
-//    console.error("Error:", error.code, error.message);
-//    alert("Error: " + error.message);
-//  });
-//});
+    onAuthStateChanged(auth, (user) => {
+  
+      callback(user); // Call the callback function with the user object
+  
+    });
+  
+  }
+  
 
 document.addEventListener("DOMContentLoaded", () => {
     const auth = getAuth();

@@ -1,5 +1,14 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+// staff_page.js or staff_page.ts
+
+import { getAuth } from "firebase/auth";
+
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+import app from 'firebaseauth.js'; // Import the initialized Firebase app
+
+
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
   authDomain: "forevertechman-website.firebaseapp.com",
@@ -8,24 +17,63 @@ const firebaseConfig = {
   messagingSenderId: "318552507372",
   appId: "1:318552507372:web:75bf8c8e432157e32736c9"
 };
-const auth = getAuth();
-const db = getFirestore();
-const portal = document.getElementById("admin-portal");
-const user = auth.currentUser;
+const auth = getAuth(app);
 
-if (user !== null) {
-    const staff = user.staff;
+const db = getFirestore(app);
 
-    const uid = user.uid;
 
-    user.providerData.forEach((profile) => {
-        console.log("Staff: " + profile.staff);
-    });
+async function isUserStaff(): Promise<boolean> {
+
+    const user = auth.currentUser;
+
+
+    if (!user) {
+
+        // Not logged in
+
+        return false;
+
+    }
+
+
+    const userDocRef = doc(db, "users", user.uid); // "users" is your collection name
+
+    const userDoc = await getDoc(userDocRef);
+
+
+    if (userDoc.exists()) {
+
+        const userData = userDoc.data();
+
+        return userData?.staff === true; // Check if 'staff' field exists and is true
+
+    } else {
+
+        // User document doesn't exist
+
+        return false;
+
+    }
+
 }
 
-staff = document.getElementById('staff').value
 
-if (!staff) {
-    window.location.href = 'homepage.html';
+async function checkStaffStatusAndRedirect() {
+
+    const isStaff = await isUserStaff();
+
+
+    if (!isStaff) {
+
+        // Redirect to homepage
+
+        window.location.href = "/homepage.html"; // Or use your router's redirect method
+
+    }
 
 }
+
+
+// Call this function when the protected page loads
+
+checkStaffStatusAndRedirect();
