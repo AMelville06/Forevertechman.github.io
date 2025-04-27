@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-import app from 'firebaseauth.js'; // Import the initialized Firebase app
+import app from './firebaseauth.js'; // Import the initialized Firebase app
 
 
 
