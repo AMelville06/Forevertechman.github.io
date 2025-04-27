@@ -1,83 +1,51 @@
-// staff_page.js or staff_page.ts
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-import app from './firebaseauth.js'; // Import the initialized Firebase app
+
+import app from './firebase_config.js'; // Import the initialized Firebase app
+
 
 const auth = getAuth(app);
-const db = getFirestore(app);
 
-async function isUserStaff(): Promise<boolean> {
-    const user = auth.currentUser;
 
-    if (!user) {
-        // Not logged in
-        return false;
-    }
+function checkStaffStatusAndRedirect() {
 
-    const userDocRef = doc(db, "users", user.uid); // "users" is your collection name
-    const userDoc = await getDoc(userDocRef);
+  const user = auth.currentUser;
 
-    if (userDoc.exists()) {
-        const userData = userDoc.data();
-        return userData?.staff === true; // Check if 'staff' field exists and is true
-    } else {
-        // User document doesn't exist
-        return false;
-    }
-}
 
-async function checkStaffStatusAndRedirect() {
-    const user = auth.currentUser;
+  if (!user) {
 
-    // Check if the user is logged in
-    if (!user) {
-        // Not logged in, redirect immediately
-        window.location.href = "/homepage.html";
-        return;
-    }
+    // Not logged in, redirect immediately
 
-    const isStaff = await isUserStaff();
+    window.location.href = "/homepage.html";
 
-    if (!isStaff) {
-        // Redirect to homepage
-        window.location.href = "/homepage.html"; // Or use your router's redirect method
-    }
+    return;
+
+  }
+
+
+  // Access the custom claim
+
+  const isStaff = user?.claims?.staff === true;
+
+
+  if (!isStaff) {
+
+    // Redirect to homepage
+
+    window.location.href = "/homepage.html";
+
+  }
+
 }
 
 
 onAuthStateChanged(auth, (user) => {
-    checkStaffStatusAndRedirect();
-    if (user) {
-        console.log("User is logged in:", user);
-        const loggedInUserId = localStorage.getItem('loggedInUserId');
-        if (loggedInUserId) {
-            console.log(user);
-            const docRef = doc(db, "users", loggedInUserId);
-            getDoc(docRef)
-                .then((docSnap) => {
-                    if (docSnap.exists()) {
-                        const userData = docSnap.data();
-                        document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
-                    } else {
-                        console.log("No document found");
-                    }
-                }).catch((error) => {
-                    console.error("Error getting document:", error);
-                });
-        } else {
-            console.log("User ID not found in localStorage");
-        }
-    } else {
-        console.log("User is not logged in");
-    }
-});
 
-// Handle logout
-document.getElementById('logout').addEventListener('click', () => {
-    localStorage.removeItem('loggedInUserId');
-    signOut(auth).then(() => {
-        window.location.href = 'index.html';
-    }).catch((error) => {
-        console.error("Error signing out:", error);
-    });
+  // Force refresh the token
+
+  user?.getIdToken(true).then(() => {
+
+    checkStaffStatusAndRedirect();
+
+  });
+
 });
