@@ -70,44 +70,47 @@
         messagingSenderId: "318552507372",
         appId: "1:318552507372:web:75bf8c8e432157e32736c9"
     };
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth();
-      const db = getDatabase();
-  
-      onAuthStateChanged(auth, user => {
-        if (user) {
-          const userRef = ref(db, `users/${user.uid}`); // Assuming you store staff flag under users/uid
-          get(userRef).then(snapshot => {
-            if (snapshot.exists() && snapshot.val().staff) {
-              document.getElementById('admin-panel').style.display = 'block';
-            } else {
-              document.getElementById('no-permission').style.display = 'block';
-            }
-          });
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+    
+    const auth = getAuth();
+    const db = getFirestore();
+    
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const uid = user.uid;
+    
+        // Check if the user is an admin
+        const userRef = doc(db, "users", uid); // assumes you store users like users/{uid}
+        const userSnap = await getDoc(userRef);
+    
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+          if (userData.staff === true) {
+            console.log("User is admin ✅");
+            showAdminPortal();
+          } else {
+            console.log("User is NOT admin ❌");
+            hideAdminPortal();
+          }
         } else {
-          window.location.href = "/index.html"; // force login if not signed in
+          console.log("No user document found.");
+          hideAdminPortal();
         }
-      });
-
-      import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-
-      const db = getFirestore();
-      
-      async function postAnnouncement(announcementText) {
-        const today = new Date();
-        const formattedDate = `${today.getMonth()+1}/${today.getDate()}/${today.getFullYear().toString().slice(-2)}`; // Example: 4/27/25
-      
-        const annRef = doc(db, 'announcements', 'current');  // Path: announcements/current
-      
-        try {
-          await updateDoc(annRef, {
-            [formattedDate]: announcementText   // Add or update today's announcement field
-          });
-          console.log('Announcement successfully posted!');
-        } catch (error) {
-          console.error('Error posting announcement:', error);
-        }
+      } else {
+        console.log("No user signed in.");
+        hideAdminPortal();
       }
+    });
+    
+    function showAdminPortal() {
+      document.getElementById('admin-portal').style.display = 'block';
+    }
+    
+    function hideAdminPortal() {
+      document.getElementById('admin-portal').style.display = 'none';
+    }
+    
     </script>
 
     <!-- Scroll to Top -->
