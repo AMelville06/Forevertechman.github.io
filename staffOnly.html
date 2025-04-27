@@ -85,22 +85,29 @@
             }
           });
         } else {
-          window.location.href = "/login.html"; // force login if not signed in
+          window.location.href = "/index.html"; // force login if not signed in
         }
       });
-  
-      document.getElementById('submitAnnouncement').addEventListener('click', () => {
-        const announcement = document.getElementById('announcementInput').value;
-        const annRef = ref(db, 'announcements/current');
-        set(annRef, announcement)
-          .then(() => {
-            alert('Announcement posted!');
-          })
-          .catch(error => {
-            console.error(error);
-            alert('Error posting announcement.');
+
+      import { getFirestore, doc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+
+      const db = getFirestore();
+      
+      async function postAnnouncement(announcementText) {
+        const today = new Date();
+        const formattedDate = `${today.getMonth()+1}/${today.getDate()}/${today.getFullYear().toString().slice(-2)}`; // Example: 4/27/25
+      
+        const annRef = doc(db, 'announcements', 'current');  // Path: announcements/current
+      
+        try {
+          await updateDoc(annRef, {
+            [formattedDate]: announcementText   // Add or update today's announcement field
           });
-      });
+          console.log('Announcement successfully posted!');
+        } catch (error) {
+          console.error('Error posting announcement:', error);
+        }
+      }
     </script>
 
     <!-- Scroll to Top -->

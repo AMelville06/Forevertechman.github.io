@@ -55,15 +55,3 @@ document.getElementById('logout').addEventListener('click', () => {
 });
 
 
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
-
-const annRef = ref(db, 'announcements/current');
-onValue(annRef, snapshot => {
-  if (snapshot.exists()) {
-    document.getElementById('announcement-area').innerText = snapshot.val();
-  } else {
-    document.getElementById('announcement-area').innerText = 'No announcements at this time.';
-  }
-});
