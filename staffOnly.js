@@ -1,6 +1,8 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-import app from './firebase_config.js'; // Import the initialized Firebase app
+import app from './firebaseauth.js'; // Import the initialized Firebase app
+
+import staffUserIds from './staff_ids.js'; // Import the list of staff user IDs
 
 
 const auth = getAuth(app);
@@ -22,9 +24,9 @@ function checkStaffStatusAndRedirect() {
   }
 
 
-  // Access the custom claim
+  // Check if the user's UID is in the staffUserIds array
 
-  const isStaff = user?.claims?.staff === true;
+  const isStaff = staffUserIds.includes(user.uid);
 
 
   if (!isStaff) {
@@ -40,12 +42,6 @@ function checkStaffStatusAndRedirect() {
 
 onAuthStateChanged(auth, (user) => {
 
-  // Force refresh the token
-
-  user?.getIdToken(true).then(() => {
-
-    checkStaffStatusAndRedirect();
-
-  });
+  checkStaffStatusAndRedirect();
 
 });
