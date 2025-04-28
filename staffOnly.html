@@ -84,24 +84,31 @@
 
     <h1>Welcome to the Staff Page!</h1>
 
-    <p>Post an Announcement</p>
-
-    <form id="announcementForm">
-
-        <input type="text" id="announcementTitle" placeholder="Title"><br><br>
-
-        <textarea id="announcementContent" placeholder="Content"></textarea><br><br>
-
-        <button type="submit">Post Announcement</button>
-
-    </form>
 
 
+    <div class="announcementsTab">
+        <h3> <a href="announcements.html"> Announcements</a> </h3>
+    </div>
 
     <!-- Scroll to Top -->
 
+    <!-- Scroll to Top -->
     <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
 
+    <script>
+  
+      const topBtn = document.getElementById("topBtn");
+  
+      window.onscroll = function () {
+        topBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+          ? "block"
+          : "none";
+      };
+  
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
 
     <div id="userDropdown">
 
@@ -122,11 +129,11 @@
 
     <ul>
 
-        <li><a class="active" href="homepage.html">Home</a></li>
+        <li><a  href="homepage.html">Home</a></li>
 
         <li><a href="calander.html">Calander</a></li>
 
-        <li><a href="staff.html">Staff</a></li>
+        <li><a class="active" href="staff.html">Staff</a></li>
 
         <li><a href="about.html">About</a></li>
 

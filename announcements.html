@@ -1,62 +1,103 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="homepagestyle.css">
-    <script type="module" src="homepage.js"></script>
+
+    <title>Staff Page</title>
+
+    <link rel="stylesheet" href="announcement.css">
+    <script type="module" src="staffOnly.js"></script>
+
 
     <style>
+
         body {margin:0;}
+
         
+
         ul {
+
           list-style-type: none;
+
           margin: 0;
+
           padding: 0;
+
           overflow: hidden;
+
           background-color: rgb(0, 149, 255);
+
           position: fixed;
+
           bottom: 0;
+
           width: 100%;
+
         }
+
         
+
         li {
+
           float: left;
+
         }
+
         
+
         li a {
+
           display: block;
+
           color: white;
+
           text-align: center;
+
           padding: 14px 16px;
+
           text-decoration: none;
+
         }
+
         
+
         li a:hover:not(.active) {
+
           background-color: #111;
+
         }
+
         
-        h2 {
-          text-align: center;
-          background-color: #a10000;
-          margin-top:80px
-        }
+
         </style>
 
 
-
 </head>
+
 <body>
 
-    <h1><strong>Welcome to the Unofficial NY283 Website</strong></h1>
-    <h2><strong>Announcements</strong></h2>
 
-  <div id="announcements">
+    <H1>Post an Announcement</H1>
+    <div class="instructions">
+    <p>Type your announcement and then press Post Announcement. The message will be auto posted to the Homepage.</p>
+    </div>
+    <form id="announcementForm">
+        <div id="messageSent" style="display: none;">Message Sent!</div>
+        <input type="text" id="announcementTitle" placeholder="Title"><br><br>
+        <div class="announcementContent">
+        <textarea id="announcementContent" placeholder="Content"></textarea><br><br>
+        </div>
+        <div class="submitAnnouncement">
+            <button id="submitAnnouncement" type="submit">Post Announcement</button>
+        </div>
+        
+    </form>
 
-    <!-- Announcements will be displayed here -->
-
-</div>
 
 
 
@@ -77,27 +118,53 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
+
     <div id="userDropdown">
+
         <div id="usernameTopRight">Hello, User</div>
+
         <div class="dropdown-content">
+
           <button id="logout">Logout</button>
+
         </div>
+
       </div>
 
 
-
-
     <div class="background-image"></div>
+
         
+
     <ul>
-        <li><a class="active" href="homepage.html">Home</a></li>
+
+        <li><a  href="homepage.html">Home</a></li>
+
         <li><a href="calander.html">Calander</a></li>
-        <li><a href="staff.html">Staff</a></li>
+
+        <li><a class="active" href="staff.html">Staff</a></li>
+
         <li><a href="about.html">About</a></li>
+
         <li style="float:right"><a href="https://www.capnhq.gov/Default.aspx?ReturnUrl=%2f">Eservices</a></li>
+
         </ul>
 
 
+    <script>
+
+        function scrollToTop() {
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        }
         
+
+    </script>
+
+
+
+
 </body>
+
 </html>

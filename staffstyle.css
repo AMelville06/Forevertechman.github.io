@@ -74,18 +74,21 @@ body {
   }
 
   #topBtn {
-    display: none;
+    display: flex;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 850px;
+    right: 10px;
     z-index: 99;
     font-size: 16px;
     background-color: #333;
     color: white;
     border: none;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    height: 30px;
+    text-align: center;
+    align-items: center;
+    width:60px;
   }
 
   #topBtn:hover {

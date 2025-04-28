@@ -42,23 +42,23 @@
 
 </head>
 <body>
-  <!-- Scroll to Top -->
-  <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
-  <script>
+    <!-- Scroll to Top -->
+    <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
 
-
-    const topBtn = document.getElementById("topBtn");
-
-    window.onscroll = function () {
+    <script>
+  
+      const topBtn = document.getElementById("topBtn");
+  
+      window.onscroll = function () {
         topBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
           ? "block"
           : "none";
       };
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+  
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
   <div id="userDropdown">
     <div id="usernameTopRight">Hello, User</div>
     <div class="dropdown-content">

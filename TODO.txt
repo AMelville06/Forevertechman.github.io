@@ -1,13 +1,17 @@
 
 Change domain name for firebase and github pages
 Get more users for testing -> Dad, Doubrava, etc.
-Users can currently go to homepage.html without logging in. This needs to be fixed.
 Google Login needs to work
-Scroll to Top button only works on current staff page
-calander looks bad
-Announcements on Homepage** TODO ASAP
+CAPID for login
+
+
 ...
 Turn into app?
+
+https://docs.google.com/document/d/1sBIFK-9BFA40fnDGupCtoNPnNT5pMpbct2XRcy8fGuE/edit?usp=sharing
+
+
+
 
 
 Fixed Problems(**{problem}** = solved):
@@ -23,3 +27,10 @@ Navbar:
 
 **About section**
 **Logout being dropdown under Hello, {User}**
+**Users can currently go to homepage.html without logging in. This needs to be fixed.**
+**calendar looks bad** -- Could still use work, but good enough
+**Announcements on Homepage**
+**Scroll to Top button only works on current staff page**
+
+
+
