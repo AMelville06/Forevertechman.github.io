@@ -5,7 +5,7 @@ Google Login needs to work
 Staff Applications
 Grouping Users (already kind of done, but could add kinds of staff)
 Send Announcements through Discord and email -- Heroku hosting? check firebase gemini for details
-
+Profiles
 
 ...
 Turn into app?

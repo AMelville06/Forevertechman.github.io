@@ -24,6 +24,33 @@ body {
     font-weight: bold;
 }
 
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-top:100px;
+    background: #999;
+  }
+  
+  .title {
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    padding-top:10px;
+  }
+
+.name {
+    margin-top: 10px;
+}
+
+.bioinfo {
+    font-size: 18px;
+    text-align: center;
+    padding-top:10px;
+}
+
 /* Username display */
 #usernameTopRight {
     background: rgba(255, 255, 255, 0.6);
