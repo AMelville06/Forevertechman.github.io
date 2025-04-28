@@ -1,4 +1,7 @@
-import { auth, db, onAuthStateChanged, signOut, collection, getDoc, doc, onSnapshot } from './auth.js';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 // Your Firebase config
 const firebaseConfig = {
@@ -15,114 +18,40 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
-async function updateUsernameDisplay(user) {
-
+onAuthStateChanged(auth, (user) => {
     if (user) {
-
         console.log("User is logged in:", user);
-
-        const docRef = doc(db, "users", user.uid);
-
-        try {
-
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-
-                const userData = docSnap.data();
-
-                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
-
-            } else {
-
-                console.log("No such document!");
-
-                document.getElementById('usernameTopRight').innerText = "Hello, User"; // Default value
-
-            }
-
-        } catch (error) {
-
-            console.error("Error getting document:", error);
-
-            document.getElementById('usernameTopRight').innerText = "Hello, User"; // Default value
-
+        const loggedInUserId = localStorage.getItem('loggedInUserId');
+        if (loggedInUserId) {
+            console.log(user);
+            const docRef = doc(db, "users", loggedInUserId);
+            getDoc(docRef)
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+                    } else {
+                        console.log("No document found");
+                    }
+                }).catch((error) => {
+                    console.error("Error getting document:", error);
+                });
+        } else {
+            console.log("User ID not found in localStorage");
         }
-
     } else {
-
         console.log("User is not logged in");
-
-        document.getElementById('usernameTopRight').innerText = "Hello, User"; // Default value
-
     }
+});
 
-}
-
-
+// Handle logout
 document.getElementById('logout').addEventListener('click', () => {
-
+    localStorage.removeItem('loggedInUserId');
     signOut(auth).then(() => {
-
         window.location.href = 'index.html';
-
     }).catch((error) => {
-
         console.error("Error signing out:", error);
-
     });
-
 });
 
-
-onAuthStateChanged(auth, async (user) => {
-
-    await updateUsernameDisplay(user);
-
-
-    const announcementsDiv = document.getElementById('announcements');
-
-
-    onSnapshot(collection(db, "announcements"), (querySnapshot) => {
-
-
-        announcementsDiv.innerHTML = ""; // Clear existing announcements
-
-
-        querySnapshot.forEach((doc) => {
-
-
-            const announcement = doc.data();
-
-
-            const announcementElement = document.createElement('div');
-
-
-            announcementElement.innerHTML = `
-
-
-                <h3>${announcement.title}</h3>
-
-
-                <p>${announcement.content}</p>
-
-
-                <p>By ${announcement.author} on ${announcement.timestamp.toDate()}</p>
-
-
-                <hr>
-
-
-            `;
-
-
-            announcementsDiv.appendChild(announcementElement);
-
-
-        });
-
-
-    });
-
-});
 

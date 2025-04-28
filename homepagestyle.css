@@ -133,7 +133,7 @@ button:hover {
     width: 100vw;
     height: 100vh;
     background-image: url('assets/Logo-no-background.png');
-    background-size: auto;
+    background-size: 40%;
     background-repeat: no-repeat;
     background-position: center 30%;  /* horizontal + vertical centering */
     background-attachment: fixed;        /* stays in place when scrolling */
