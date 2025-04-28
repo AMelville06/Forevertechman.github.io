@@ -44,7 +44,7 @@ async function checkStaffStatusAndRedirect() {
     const isStaff = await isUserStaff(user);
 
     if (!isStaff) {
-        window.location.href = "index.html";
+        window.location.href = "staff.html";
     }
 }
 
