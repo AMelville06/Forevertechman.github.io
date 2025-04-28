@@ -2,7 +2,9 @@
 Change domain name for firebase and github pages
 Get more users for testing -> Dad, Doubrava, etc.
 Google Login needs to work
-CAPID for login
+Staff Applications
+Grouping Users (already kind of done, but could add kinds of staff)
+Send Announcements through Discord and email -- Heroku hosting? check firebase gemini for details
 
 
 ...
@@ -31,6 +33,7 @@ Navbar:
 **calendar looks bad** -- Could still use work, but good enough
 **Announcements on Homepage**
 **Scroll to Top button only works on current staff page**
-
+**CAPID for login**
+**IT required for account activation**
 
 
