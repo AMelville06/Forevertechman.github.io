@@ -18,16 +18,17 @@ body, html {
   
   .iframe-wrapper {
     width: 980px;
-    height: 480px; /* Shrink height to force vertical cropping */
+    height: 490px; /* Shrink height to force vertical cropping */
     overflow:hidden;
     margin: 40px auto; /* Centers the iframe horizontally */
     position: relative;
     margin-top:0%;
+    top:500px;
   }
   
   .calendar-frame {
     width: 1000px;
-    height: 357px;
+    height: 410px;
     border: none;
     position: absolute;
     top: 5px; /* This shifts the iframe upward to hide top padding */
@@ -153,7 +154,7 @@ button:hover {
     width: 100vw;
     height: 100vh;
     background-image: url('assets/Logo-no-background.png');
-    background-size: 40%;
+    background-size: auto;
     background-repeat: no-repeat;
     background-position: center 30%;  /* horizontal + vertical centering */
     background-attachment: fixed;        /* stays in place when scrolling */

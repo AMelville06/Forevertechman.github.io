@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="homepagestyle.css">
-    <script type="module" src="homepage.js"></script>
 
     <style>
-        body {margin:0;}
-        
+        body { margin: 0; }
         ul {
           list-style-type: none;
           margin: 0;
@@ -20,11 +18,9 @@
           bottom: 0;
           width: 100%;
         }
-        
         li {
           float: left;
         }
-        
         li a {
           display: block;
           color: white;
@@ -32,47 +28,19 @@
           padding: 14px 16px;
           text-decoration: none;
         }
-        
         li a:hover:not(.active) {
           background-color: #111;
         }
-        
-        </style>
-
-
-
+    </style>
 </head>
 <body>
-
-  <div id="announcement-area">
-    Loading announcement...
-  </div>
-
-  <script type="module">
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
-    
-    const annRef = ref(db, 'announcements/current');
-    onValue(annRef, snapshot => {
-      if (snapshot.exists()) {
-        document.getElementById('announcement-area').innerText = snapshot.val();
-      } else {
-        document.getElementById('announcement-area').innerText = 'No announcements at this time.';
-      }
-    });
-  </script>
-
-
+    <div id="announcements">
+        <!-- Announcements will be displayed here -->
+    </div>
 
     <!-- Scroll to Top -->
     <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
 
-    <script>
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    </script>
     <div id="userDropdown">
         <div id="usernameTopRight">Hello, User</div>
         <div class="dropdown-content">
@@ -82,19 +50,21 @@
 
     <h1><strong>Welcome to the Unofficial NY283 Website</strong></h1>
 
-
-
     <div class="background-image"></div>
         
     <ul>
         <li><a class="active" href="homepage.html">Home</a></li>
-        <li><a href="calander.html">Calander</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
         <li><a href="staff.html">Staff</a></li>
         <li><a href="about.html">About</a></li>
         <li style="float:right"><a href="https://www.capnhq.gov/Default.aspx?ReturnUrl=%2f">Eservices</a></li>
-        </ul>
+    </ul>
 
-
-        
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+    <script type="module" src="homepage.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // staffOnly.js
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, db, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 
 // Your Firebase config
@@ -85,4 +85,64 @@ document.getElementById('logout').addEventListener('click', () => {
     }).catch((error) => {
         console.error("Error signing out:", error);
     });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const announcementForm = document.getElementById('announcementForm');
+
+
+    announcementForm.addEventListener('submit', async (event) => {
+
+        event.preventDefault();
+
+
+        const title = document.getElementById('announcementTitle').value;
+
+        const content = document.getElementById('announcementContent').value;
+
+
+        // Get the current user (assuming they are logged in)
+
+        const user = auth.currentUser;
+
+
+        if (user) {
+
+            try {
+
+                const docRef = await addDoc(collection(db, "announcements"), {
+
+                    title: title,
+
+                    content: content,
+
+                    author: user.displayName || "Anonymous", // Use display name if available
+
+                    timestamp: new Date()
+
+                });
+
+                console.log("Announcement written with ID: ", docRef.id);
+
+                document.getElementById('announcementTitle').value = ""; // Clear the form
+
+                document.getElementById('announcementContent').value = "";
+
+            } catch (e) {
+
+                console.error("Error adding document: ", e);
+
+            }
+
+        } else {
+
+            console.log("No user is signed in.");
+
+            // Handle the case where the user is not signed in.
+
+        }
+
+    });
+
 });
