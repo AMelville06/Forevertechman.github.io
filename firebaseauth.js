@@ -1,26 +1,36 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
+
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
+  apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
 
-    authDomain: "forevertechman-website.firebaseapp.com",
+  authDomain: "forevertechman-website.firebaseapp.com",
 
-    projectId: "forevertechman-website",
+  projectId: "forevertechman-website",
 
-    storageBucket: "forevertechman-website.firebasestorage.app",
+  storageBucket: "forevertechman-website.firebasestorage.app",
 
-    messagingSenderId: "318552507372",
+  messagingSenderId: "318552507372",
 
-    appId: "1:318552507372:web:75bf8c8e432157e32736c9"
+  appId: "1:318552507372:web:75bf8c8e432157e32736c9"
 
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+export { auth, db, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, setDoc, doc };
+
 
 function showMessage(message, divId){
    var messageDiv=document.getElementById(divId);

@@ -1,81 +1,179 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Staff Page</title>
+
     <link rel="stylesheet" href="homepagestyle.css">
-    <script type="module" src="staffOnly.js"></script>
+
 
     <style>
+
         body {margin:0;}
+
         
+
         ul {
+
           list-style-type: none;
+
           margin: 0;
+
           padding: 0;
+
           overflow: hidden;
+
           background-color: rgb(0, 149, 255);
+
           position: fixed;
+
           bottom: 0;
+
           width: 100%;
+
         }
+
         
+
         li {
+
           float: left;
+
         }
+
         
+
         li a {
+
           display: block;
+
           color: white;
+
           text-align: center;
+
           padding: 14px 16px;
+
           text-decoration: none;
+
         }
+
         
+
         li a:hover:not(.active) {
+
           background-color: #111;
+
         }
+
         
+
         </style>
 
 
-
 </head>
+
 <body>
 
+
     <h1>Welcome to the Staff Page!</h1>
+
     <p>This page is only visible to staff members.</p>
 
+
     <!-- Scroll to Top -->
+
     <button onclick="scrollToTop()" id="topBtn">↑ Top</button>
 
-    <script>
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    </script>
+
     <div id="userDropdown">
+
         <div id="usernameTopRight">Hello, User</div>
+
         <div class="dropdown-content">
+
           <button id="logout">Logout</button>
+
         </div>
+
       </div>
 
 
-
-
     <div class="background-image"></div>
+
         
+
     <ul>
+
         <li><a class="active" href="homepage.html">Home</a></li>
+
         <li><a href="calander.html">Calander</a></li>
+
         <li><a href="staff.html">Staff</a></li>
+
         <li><a href="about.html">About</a></li>
+
         <li style="float:right"><a href="https://www.capnhq.gov/Default.aspx?ReturnUrl=%2f">Eservices</a></li>
+
         </ul>
 
 
+    <script>
+
+        function scrollToTop() {
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        }
+
+        function onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("User is logged in:", user);
+                const loggedInUserId = localStorage.getItem('loggedInUserId');
+                if (loggedInUserId) {
+                    console.log(user);
+                    const docRef = doc(db, "users", loggedInUserId);
+                    getDoc(docRef)
+                        .then((docSnap) => {
+                            if (docSnap.exists()) {
+                                const userData = docSnap.data();
+                                document.getElementById('usernameTopRight').innerText = `Hello, ${userData.firstName}`;
+                            } else {
+                                console.log("No document found");
+                            }
+                        }).catch((error) => {
+                            console.error("Error getting document:", error);
+                        });
+                } else {
+                    console.log("User ID not found in localStorage");
+                }
+            } else {
+                console.log("User is not logged in");
+            }
+        });
         
+        // Handle logout
+        document.getElementById('logout').addEventListener('click', () => {
+            localStorage.removeItem('loggedInUserId');
+            signOut(auth).then(() => {
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error("Error signing out:", error);
+            });
+        });
+        
+
+    </script>
+
+
+    <script src="staffOnly.js" type="module"></script>
+
+
 </body>
+
 </html>
