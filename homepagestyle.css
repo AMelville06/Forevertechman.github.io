@@ -11,7 +11,7 @@ body {
     padding: 0;
     font-family: "Poppins", sans-serif;
     background: linear-gradient(to right, #00f7ff, rgb(0, 110, 255));
-    height: 100vh;
+    height: 200vh;
     position: relative;
 }
 
@@ -387,4 +387,85 @@ input:focus~label,input:not(:placeholder-shown)~label{
     padding: 5%;
     font-size: large;
     position: relative;
+}
+
+
+
+/* Announcement Bubble */
+
+.announcement {
+
+    /* display:flex; //Unnecessary */
+
+    /* align-items: center; //Unnecessary */
+
+    position: relative; /* Keep the position on the screen relative */
+
+    top: 250px; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Correctly center the element */
+
+    width: 400px; /* Or whatever width you want */
+
+    height: 200px;
+
+    background-color: #fff;
+
+    border-radius: 50px; /* Or whatever border-radius you want */
+
+    padding: 20px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+
+
+
+/* Author Styling */
+
+.announcement .author {
+
+    position: absolute;
+
+    top: 10px;
+
+    left: 20px;
+
+    font-size: 0.8em;
+
+    color: #666;
+
+}
+
+
+/* Message Styling */
+
+.announcement .content {
+
+    font-size: 1em;
+
+    color: #333;
+
+    padding-top: 50px;
+}
+
+
+/* Timestamp Styling */
+
+.announcement .timestamp {
+
+    position: absolute;
+
+    bottom: 10px;
+
+    right: 40px;
+
+    font-size: 0.7em;
+
+    color: #999;
+
 }

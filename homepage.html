@@ -44,24 +44,14 @@
 </head>
 <body>
 
-  <div id="announcement-area">
-    Loading announcement...
-  </div>
+  <h1><strong>Welcome to the Unofficial NY283 Website</strong></h1>
 
-  <script type="module">
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
-    
-    const annRef = ref(db, 'announcements/current');
-    onValue(annRef, snapshot => {
-      if (snapshot.exists()) {
-        document.getElementById('announcement-area').innerText = snapshot.val();
-      } else {
-        document.getElementById('announcement-area').innerText = 'No announcements at this time.';
-      }
-    });
-  </script>
+  <div id="announcements">
+
+    <!-- Announcements will be displayed here -->
+
+</div>
 
 
 
@@ -80,7 +70,6 @@
         </div>
       </div>
 
-    <h1><strong>Welcome to the Unofficial NY283 Website</strong></h1>
 
 
 
