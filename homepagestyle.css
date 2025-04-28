@@ -358,6 +358,23 @@ input:focus~label,input:not(:placeholder-shown)~label{
     text-decoration: none;
 }
 
+.staffOnly a {
+    color:rgb(0, 0, 255);
+    text-decoration: none;
+}
+
+.staffOnly h3{
+    font-size: x-large;
+    text-align:left;
+    position: relative;
+    left: 30px;
+    top: 180px;
+    display: inline;
+    background-color: rgba(0, 85, 255, 0.322);
+    padding: 10px;
+    border-radius: 35px;
+}
+
 .aboutMessage {
     text-align:center;
     padding: 5%;
