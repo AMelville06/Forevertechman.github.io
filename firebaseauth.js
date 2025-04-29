@@ -43,7 +43,7 @@ signUp.addEventListener('click', (event)=>{
    const password=document.getElementById('rPassword').value;
    const firstName=document.getElementById('fName').value;
    const lastName=document.getElementById('lName').value;
-    const capid=document.getElementById('capid').value;
+   const capid=document.getElementById('capid').value;
 
 
    createUserWithEmailAndPassword(auth, email, password)
@@ -56,7 +56,12 @@ signUp.addEventListener('click', (event)=>{
            capid:capid,
            staff:false,
            admin:false,
-           accountActive:false
+           accountActive:false,
+           profile: {
+               rank: "Cadet",  // Default value, user can edit later
+               profilePictureUrl: "assets/Profile Pictures/"+{firstName}+{lastName}+".jpg", // Empty for now, can be updated later
+               bio: "", // Empty bio
+           }
        };
        showMessage('Account Created Successfully', 'signUpMessage');
        const docRef=doc(db, "users", user.uid);

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>NY283 Staff</title>
   <link rel="stylesheet" href="homepagestyle.css"> <!-- if you have one -->
-  <script type="module" src="profile.js"></script>
+  <script type="module" src="homepage.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
@@ -36,21 +36,7 @@
     li a:hover:not(.active) {
       background-color: #111;
     }
-    .avatar-grid {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    .avatar-grid img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border: 2px solid transparent;
-        cursor: pointer;
-    }
-    .avatar-grid img.selected {
-        border-color: blue;
-    }
+    
   </style>
 
 
@@ -76,22 +62,9 @@
 
  <!-- Add icon library -->
 
-
-
-     <h1>Choose Your Profile Picture</h1>
- 
-     <div id="current-profile">
-         <h2>Your Current Picture:</h2>
-         <img id="profile-pic" src="assets/Profile Pictures/default.png" alt="Profile Picture" width="150" height="150">
-     </div>
- 
-     <h2>Pick a New One:</h2>
-     <div class="avatar-grid" id="avatar-grid"></div>
- 
-     <button id="save-button">Save Choice</button>
- 
-     <script src="profile.js"></script>
- 
+ <div class="currentStaff">
+    <h3><a href="profiles/AlexMelville.html"> 1st Lt Alex Melville</a> </h3>
+  </div>
 
 
     <div id="userDropdown">
