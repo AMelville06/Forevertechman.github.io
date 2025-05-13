@@ -1,19 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { getFirestore, getDoc, doc, collection, onSnapshot, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-// Your Firebase config
-const firebaseConfig = {
-    apiKey: "AIzaSyA8eNKm8fBaUcKJy0jozX4U_0VqCHS2WvQ",
-    authDomain: "forevertechman-website.firebaseapp.com",
-    projectId: "forevertechman-website",
-    storageBucket: "forevertechman-website.appspot.com",
-    messagingSenderId: "318552507372",
-    appId: "1:318552507372:web:75bf8c8e432157e32736c9"
-};
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
