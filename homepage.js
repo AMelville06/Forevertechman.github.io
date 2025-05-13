@@ -121,21 +121,12 @@ document.getElementById('logout').addEventListener('click', () => {
     });
 });
 
-async function checkIfLoggedIn() {
+document.addEventListener("DOMContentLoaded", function() {
     const user = auth.currentUser;
-
     if (!user) {
         window.location.href = "index.html";
         return;
     }
-
-}
-
-onAuthStateChanged(auth, async (user) => {
-    await checkIfLoggedIn();
-});
-
-window.onload = function() {
 
     if (localStorage.getItem('reloadHomepage') === 'true') {
   
@@ -145,5 +136,5 @@ window.onload = function() {
   
     }
   
-  };
+  });
   
