@@ -28,7 +28,7 @@ function formatDate(date) {
 
 //I have put all of the display code into it's own function to make sure it is ran as soon as the authentication completes.
 
-async function displayCode() {
+document.readyState(async function displayCode() {
     const announcementsDiv = document.getElementById('announcements');
     const recentMessagesQuery = query(collection(db, "announcements"), orderBy('timestamp', 'desc'), limit(5));
 
@@ -66,7 +66,7 @@ async function displayCode() {
             announcementsDiv.appendChild(announcementElement);
         }
     });
-}
+});
 
 
 onAuthStateChanged(auth, (user) => {

@@ -13,15 +13,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const db = getFirestore();
+var app = initializeApp(firebaseConfig);
+var auth = getAuth();
+var db = getFirestore();
+//var user = auth.currentUser;
 
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // After login, the messages will load
-        displayCode();
 
         console.log("User is logged in:", user);
         const loggedInUserId = localStorage.getItem('loggedInUserId');
@@ -58,8 +57,7 @@ document.getElementById('logout').addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const user = auth.currentUser;
-    if (!user) {
+    if (!auth.currentUser) {
         window.location.href = "index.html";
         return;
     }
